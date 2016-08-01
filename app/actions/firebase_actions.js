@@ -19,6 +19,14 @@ export function loginWithProvider(provider){
   }
 }
 
+export function loginWithProviderCredentials(){
+  const request = FireBaseTools.loginWithProviderCredentials();
+  return {
+    type : LOGIN_WITH_PROVIDER_FIREBASE,
+    payload : request
+  }
+}
+
 ///// EXPORTED ACTIONS
 export function registerUser(user) {
 

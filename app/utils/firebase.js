@@ -64,6 +64,57 @@ var FireBaseTools = {
 
     },
 
+    loginWithProviderCredentials: () => {
+
+      return new Promise((resolve, reject) => {
+
+        chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+          if (chrome.runtime.lastError && !interactive) {
+            console.log('It was not possible to get a token programmatically.');
+            reject('It was not possible to get a token programmatically.');
+            // Show the sign-in button
+            // document.getElementById('quickstart-button').disabled = false;
+          } else if(chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError);
+            reject(chrome.runtime.lastError);
+          } else if (token) {
+            // Authrorize Firebase with the OAuth Access Token.
+            var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+            return firebaseAuth.signInWithCredential(credential)
+              .then(function(){
+                // console.log('from then of firebaseAuth.signInWithCredentials')
+                // resolve()
+                currentUserPromise().then(user => {
+                    if (user) {
+                        console.log('from inside w credentials to resolve user obj: ', user);
+                        resolve(user)
+                    }
+                })
+              }
+              )
+              .catch(function(error) {
+                // The OAuth token might have been invalidated. Lets' remove it from cache.
+                if (error.code === 'auth/invalid-credential') {
+                  chrome.identity.removeCachedAuthToken({token: token}, function() {
+                    loginWithProviderCredentials(interactive);
+                  });
+                }
+                else{
+                  return {
+                    errorCode: error.code,
+                    errorMessage: error.message
+                  }
+                }
+              });
+          } else {
+            console.error('The OAuth Token was null');
+            reject('The OAuth Token was null');
+          }
+        })
+      });
+
+    },
+
 
     registerUser: (user) => {
 
@@ -113,7 +164,7 @@ var FireBaseTools = {
                         resolve(user);
                     })
                 } else {
-                    resolve({testKey: 'this is a test'})
+                    reject(user);
                 }
             });
         });

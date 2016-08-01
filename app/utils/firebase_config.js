@@ -2,10 +2,10 @@ module.exports = {
 
     FIREBASE_CONFIG: {
 
-      apiKey: "AIzaSyB6bt_iabL567F5GjK2KMW-RD0KG_4z-jM",
-      authDomain: "fb-test-c7bc1.firebaseapp.com",
-      databaseURL: "https://fb-test-c7bc1.firebaseio.com",
-      storageBucket: "",
+      apiKey: "AIzaSyDO0b90v3PwupdBixHl2hQjWd1TCGuLfXg",
+      authDomain: "gold-app-1386.firebaseapp.com",
+      databaseURL: "https://gold-app-1386.firebaseio.com",
+      storageBucket: "gold-app-1386.appspot.com"
 
     }
 };

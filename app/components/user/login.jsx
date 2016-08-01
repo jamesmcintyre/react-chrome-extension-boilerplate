@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {loginUser, fetchUser, loginWithProvider} from '../../actions/firebase_actions';
+import {loginUser, fetchUser, loginWithProvider, loginWithProviderCredentials} from '../../actions/firebase_actions';
 
 
 class UserLogin extends Component {
@@ -11,6 +11,7 @@ class UserLogin extends Component {
         super(props);
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.loginWithProvider = this.loginWithProvider.bind(this);
+        // this.loginWithProviderCredentials = this.loginWithProviderCredentials.bind(this);
         this.state = {
             message: ''
         }
@@ -20,7 +21,31 @@ class UserLogin extends Component {
       console.log("provider :", provider);
       this.props.loginWithProvider(provider).then(data=>{
         console.log("After login in provider : ", data);
-        
+
+        if (data.payload.errorCode)
+            this.setState({message: data.payload.errorMessage})
+        else
+            browserHistory.push('/profile');
+
+      });
+      // alert("login with provider");
+    }
+
+    //TODO: instead of a .then, the action should change logged-in state
+    //and this view should push browserHistory if state change
+    loginWithProviderCredentials(){
+      console.log("starting login with google oath");
+      this.props.loginWithProviderCredentials(true).then(data=>{
+        console.log("After login in provider Credentials : ", data);
+
+        // let isLoggedIn = data.payload.currentUser || false;
+        //
+        // if(isLoggedIn){
+        //   browserHistory.push('/profile');
+        // }
+        // else{
+        //   this.setState({message: 'error from loginWithProvider!!!!'});
+        // }
         if (data.payload.errorCode)
             this.setState({message: data.payload.errorMessage})
         else
@@ -67,11 +92,11 @@ class UserLogin extends Component {
                     <h5><Link to="/reset">Forgot password?</Link></h5>
 
                     <h4>Login with</h4>
-                    <a href="#" className="btn btn-primary bt-social" onClick={()=>{this.loginWithProvider("facebook")}} data-provider="facebook">Facebook</a>
+                    <a href="#" className="btn btn-danger bt-social" onClick={()=>{this.loginWithProviderCredentials()}} data-provider="google">Google+</a>
                     {/*
+                    <a href="#" className="btn btn-primary bt-social" onClick={()=>{this.loginWithProvider("facebook")}} data-provider="facebook">Facebook</a>
                     <a href="#" className="btn btn-info bt-social" data-provider="twitter">Twitter</a>
 
-                    <a href="#" className="btn btn-danger bt-social" data-provider="google">Google+</a>
                     <a href="#" className="btn btn-default bt-social" data-provider="github">GitHub</a>
                     <a href="#" className="btn btn-warning" id="btAnon">Anon</a>
                     */}
@@ -88,7 +113,8 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         loginUser,
         fetchUser,
-        loginWithProvider
+        loginWithProvider,
+        loginWithProviderCredentials
     }, dispatch);
 }
 
