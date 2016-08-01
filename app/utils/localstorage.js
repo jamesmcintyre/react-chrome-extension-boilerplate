@@ -15,6 +15,9 @@ export function fetchUserObject(obj) {
             'photoUrl': obj.photoUrl
         };
         // let jsonUserObj = JSON.stringify(user);
+        // localStorage.setItem('currentUser', JSON.stringify(user));
+        // let userObject = localStorage.getItem('currentUser');
+        // resolve(JSON.parse(userObject));
         chrome.storage.local.set({currentUser: user}, function(result){
           console.log('localstorage set currentUser: ', result);
           chrome.storage.local.get('currentUser', function(result){

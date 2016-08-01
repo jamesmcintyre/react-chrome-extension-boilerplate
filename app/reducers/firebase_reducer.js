@@ -7,19 +7,19 @@ import {
   CHANGE_FIREBASE_USER_PASSWORD,
   FIREBASE_PASSWORD_RESET_EMAIL,
   LOGOUT_FIREBASE_USER
-} from '../actions/firebase_actions';
+} from '../constants/AuthTypes';
 
 
 export default function(state = null, action) {
     switch (action.type) {
         case FETCH_FIREBASE_USER:
-            return action.payload
+            return action.payload;
         case LOGOUT_FIREBASE_USER:
-            return action.payload
+            return action.payload;
         case REGISTER_FIREBASE_USER:
-              return action.payload
+              return action.payload;
         case LOGIN_FIREBASE_USER:
-              return action.payload
+              return action.payload;
         case UPDATE_FIREBASE_USER:
               return action.payload;
         case CHANGE_FIREBASE_USER_PASSWORD:
@@ -28,7 +28,6 @@ export default function(state = null, action) {
               return action.payload;
         case LOGIN_WITH_PROVIDER_FIREBASE:
               return action.payload;
-
     }
     return state;
 }

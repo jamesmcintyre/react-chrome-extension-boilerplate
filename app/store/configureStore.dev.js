@@ -4,10 +4,10 @@ import rootReducer from '../reducers/index';
 import ReduxPromise from 'redux-promise';
 // import { storage } from '../utils/localstorage';
 
-// const enhancer = compose(
-//   applyMiddleware(thunk),
-//   window.devToolsExtension ? window.devToolsExtension() : nope => nope
-// );
+const enhancer = compose(
+  applyMiddleware(ReduxPromise),
+  window.devToolsExtension ? window.devToolsExtension() : nope => nope
+);
 
 // const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
@@ -15,10 +15,7 @@ export default function (initialState) {
   const store = createStore(
     rootReducer,
     initialState,
-    compose(
-      applyMiddleware(ReduxPromise),
-      window.devToolsExtension ? window.devToolsExtension() : nope => nope
-    )
+    enhancer
   );
 
   if (module.hot) {

@@ -106,16 +106,16 @@ var FireBaseTools = {
                 };
             });
 
-            // firebaseAuth.onAuthStateChanged(user => {
-            //     //resolve(firebase.auth().currentUser);
-            //     if (user) {
-            //         fetchUserObject(firebase.auth().currentUser).then(user => {
-            //             resolve(user);
-            //         })
-            //     } else {
-            //         resolve(null)
-            //     }
-            // });
+            firebaseAuth.onAuthStateChanged(user => {
+                //resolve(firebase.auth().currentUser);
+                if (user) {
+                    fetchUserObject(firebase.auth().currentUser).then(user => {
+                        resolve(user);
+                    })
+                } else {
+                    resolve({testKey: 'this is a test'})
+                }
+            });
         });
 
     },
