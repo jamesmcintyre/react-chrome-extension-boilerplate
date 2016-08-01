@@ -1,6 +1,12 @@
 {
-  "presets": ["es2015", "stage-0", "react"],
-  "plugins": ["add-module-exports", "transform-decorators-legacy", "transform-runtime"],
+  "presets": ["react", "es2015", "stage-0"],
+  "plugins": [
+    "add-module-exports",
+    "transform-decorators-legacy",
+    "transform-runtime",
+    "syntax-class-properties",
+    "transform-class-properties"
+  ],
   "env": {
     "test": {
       "plugins": [

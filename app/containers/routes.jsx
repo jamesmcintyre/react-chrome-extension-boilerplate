@@ -12,7 +12,7 @@ import requireAuth from '../utils/authenticated';
 
 
 export default (
-  <Route path="/"  component={App}>
+  <Route path="/newtab.html"  component={App}>
     <IndexRoute component={HomeIndex} />
     <Route path="/login" component={UserLogin} />
     <Route path="/logout" component={UserLogout} />

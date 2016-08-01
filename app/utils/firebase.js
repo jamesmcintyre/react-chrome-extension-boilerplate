@@ -101,20 +101,21 @@ var FireBaseTools = {
         return new Promise((resolve, reject) => {
             currentUserPromise().then(user => {
                 if (user) {
+                    console.log('from inside fetchUser to resolve user obj: ', user);
                     resolve(user)
                 };
             });
 
-            firebaseAuth.onAuthStateChanged(user => {
-                //resolve(firebase.auth().currentUser);
-                if (user) {
-                    fetchUserObject(firebase.auth().currentUser).then(user => {
-                        resolve(user);
-                    })
-                } else {
-                    resolve(null)
-                }
-            });
+            // firebaseAuth.onAuthStateChanged(user => {
+            //     //resolve(firebase.auth().currentUser);
+            //     if (user) {
+            //         fetchUserObject(firebase.auth().currentUser).then(user => {
+            //             resolve(user);
+            //         })
+            //     } else {
+            //         resolve(null)
+            //     }
+            // });
         });
 
     },

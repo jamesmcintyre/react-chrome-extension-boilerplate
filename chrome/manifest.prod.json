@@ -17,6 +17,14 @@
   "background": {
     "page": "background.html"
   },
-  "permissions": [ "contextMenus", "tabs", "storage", "https://github.com/*" ],
-  "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+  "permissions": [ "identity", "contextMenus", "management", "tabs", "storage", "https://github.com/*" ],
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 https://www.gstatic.com wss://*.firebaseio.com https://*.firebaseio.com https://www.googleapis.com 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000 https://www.gstatic.com wss://*.firebaseio.com ://*.firebaseio.com https://www.googleapis.com; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:;",
+  "oauth2": {
+    "client_id": "211197224104-c9cmdoi2o1bd60c8l6a6l0smbg9ilkc8.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv6UUzPd9uYzG2YXJ4nAeICeyVyfSETLc8pFdstZL2j98bK08JtlE30GlGYkaeDxaqfChgiGzUSgofNpltgoCaN2r7VokDvFPsxYuZ9ZkebR7RUW2VbK3+zNmSZBsDcB/1WWsxsXvrwMgtJSgCOKGTxuFrh4qdRAlF19pUM81MWPTisucA5CYvlxhTO6c+apehipsdNc7ebmkxWGRpoLoCq3AAgJJn8b1j6Hh6x7U6D7BOXaKG11Yl5EkudEjxDNlkbLIVpo1MLzmn50QooJpCa+/62CQ9UlodemlX9ouhdWL8uBYOLHC7en72jm/qKrHxecT64KA+9/gTbM4ENpxTwIDAQAB"
 }

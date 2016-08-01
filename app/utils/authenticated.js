@@ -1,9 +1,9 @@
 import firebase from './firebase';
-import { currentUser } from './localstorage';
+import { currentUserPromise } from './localstorage';
 
 function requireAuth(nextState, replace) {
 
-    if (!currentUser()) {
+    if (!currentUserPromise()) {
         replace({
             pathname: '/login',
             state: {

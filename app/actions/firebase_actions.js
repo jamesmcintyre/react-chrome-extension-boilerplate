@@ -1,14 +1,14 @@
 import FireBaseTools from '../utils/firebase';
 import {
   LOGIN_WITH_PROVIDER_FIREBASE,
-  REGISTER_FIRABASE_USER,
+  REGISTER_FIREBASE_USER,
   LOGIN_FIREBASE_USER,
   FETCH_FIREBASE_USER,
   UPDATE_FIREBASE_USER,
   CHANGE_FIREBASE_USER_PASSWORD,
   FIREBASE_PASSWORD_RESET_EMAIL,
-  LOGOUT_FIRABSE_USER
-} from '../constants/types';
+  LOGOUT_FIREBASE_USER
+} from '../constants/AuthTypes';
 
 
 export function loginWithProvider(provider){
@@ -24,7 +24,7 @@ export function registerUser(user) {
 
     const request = FireBaseTools.registerUser(user);
     return {
-        type: REGISTER_FIRABASE_USER,
+        type: REGISTER_FIREBASE_USER,
         payload: request
     }
 }
@@ -75,7 +75,7 @@ export function resetPasswordEmail(email){
 export function logoutUser(user) {
     const request = FireBaseTools.logoutUser(user);
     return {
-        type: LOGOUT_FIRABSE_USER,
+        type: LOGOUT_FIREBASE_USER,
         payload: request
     }
 
