@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "description": "stay golden pony boy",
   "chrome_url_overrides": {
-    "newtab": "popup.html"
+    "newtab": "newtab.html"
   },
   "icons": {
     "16": "img/icon-16.png",

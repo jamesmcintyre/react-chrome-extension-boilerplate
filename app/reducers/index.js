@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import todos from './todos';
+import FireBaseUserReducer from './firabase_reducer';
 
-export default combineReducers({
-  todos
+const rootReducer = combineReducers({
+    currentUser: FireBaseUserReducer,
 });
+
+export default rootReducer;
