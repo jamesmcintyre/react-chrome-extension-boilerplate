@@ -9,3 +9,6 @@ dev/
 *.crx
 *.pem
 update.xml
+
+chrome/manifest.dev.json
+chrome/manifest.prod.json
