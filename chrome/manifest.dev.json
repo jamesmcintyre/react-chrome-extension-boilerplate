@@ -1,11 +1,10 @@
 {
-  "version": "0.0.0",
-  "name": "react-chrome-extension-example",
+  "version": "0.5.0",
+  "name": "gold app",
   "manifest_version": 2,
-  "description": "Example for react-chrome-extension-boilerplate",
-  "browser_action": {
-    "default_title": "React Chrome Extension Example",
-    "default_popup": "popup.html"
+  "description": "stay golden pony boy",
+  "chrome_url_overrides": {
+    "newtab": "popup.html"
   },
   "icons": {
     "16": "img/icon-16.png",
